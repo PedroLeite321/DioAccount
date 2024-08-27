@@ -42,6 +42,8 @@ export abstract class DioAccount {
     this.balance -= withdrawnValue;
     this.checkWithdraw(withdrawnValue);
     console.log('Voce sacou');
+
+    
   }
 
   getBalance = (): void => {
