@@ -30,18 +30,23 @@ export class Bank extends DioAccount {
     
         this.showOptions();
     
-        this.rl.question("Please select the service you want to use", (option: string) => {
+        this.rl.question("Please select the service you want to use: ", (option: string) => {
             // This needs to be declared as a annonymous function as using the keyword functions triggers 'any' on this keyword. (That being caused because 'this' acts globally instead of within its scope.)
 
             switch(Number(option)) {
                 case 1:
+                    console.log("Teste")
                     this.checkBalance();
+                    this.finishUse();
                     break;
+                    
                 case 2:
                     this.deposit(1000);
+                    this.finishUse();
                     break;
                 case 3:
                     this.withdraw(10);
+                    this.finishUse();
                     break;
     
     
@@ -49,6 +54,12 @@ export class Bank extends DioAccount {
     
         });
     
+    }
+
+    finishUse = () => {
+        console.log("Thanks! Do you want to keep using our product?");
+
+        console.log("Press 1 - 'Yes' \n\n Press 2 - 'No'")
     }
 
 }

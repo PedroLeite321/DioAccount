@@ -44,6 +44,6 @@ const useProgram = (userId: number) => {
     
 }
 // For the sake of the simplicity, lets say there's only one user. 
-bank.showOptions();
+bank.bankInteraction()
 
 useProgram(1);
