@@ -41,14 +41,22 @@ export class Bank extends DioAccount {
                     break;
                     
                 case 2:
-                    this.deposit(1000);
-                    this.finishUse();
+                    this.rl.question("Please, how much do you want to deposit?", (option : string)=> {
+                        this.deposit(Number(option));
+                        this.finishUse();
+                    });                   
+        
+                    
                     break;
                 case 3:
-                    this.withdraw(10);
+                    
+                    this.rl.question("Please, how much do you want to withdraw?", (option : string)=> {
+                        this.withdraw(Number(option));
+                    })                                 
                     this.finishUse();
                     break;
-    
+                default:
+                    throw new Error("Number couldn't be identified. Closing application. ");
     
             }
     
@@ -59,7 +67,24 @@ export class Bank extends DioAccount {
     finishUse = () => {
         console.log("Thanks! Do you want to keep using our product?");
 
-        console.log("Press 1 - 'Yes' \n\n Press 2 - 'No'")
+        console.log("Press 1 - 'Yes' \n\n Press 2 - 'No'");
+
+        this.rl.question("Please select the service you want to use: ", (option: string) => {
+            if(option === '1') {
+                this.bankInteraction();
+
+            }else if(option !== '1' && option !== '2'){
+
+                throw new Error("Number couldn't be identified. Closing application. ");
+
+            }else  {
+                console.log("Thanks! Please, feel free to come back anytime! ");
+
+            }
+
+        })
+
+
     }
 
 }
