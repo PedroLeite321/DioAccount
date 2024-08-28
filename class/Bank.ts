@@ -1,6 +1,7 @@
 import { DioAccount } from "./DioAccount";
 import * as readline from 'readline';
 import { PeopleAccount } from "./PeopleAccount";
+import { CompanyAccount } from "./CompanyAccount";
 
 export class Bank extends DioAccount {
     rl = readline.createInterface({
@@ -9,9 +10,14 @@ export class Bank extends DioAccount {
     });
 
     PeopleAccount : PeopleAccount;
+    CompanyAccount : CompanyAccount;
 
-    constructor() {
+       constructor() {
         super('Nath', 1); //Call all atributes from parent class'peopleAccount'
+
+        super("DIO", 20); // call attributes from CompanyAccount too. (Because there cannot be multiple constructors).
+
+        this.CompanyAccount = new CompanyAccount('DIO', 20);
 
         this.PeopleAccount = new PeopleAccount(1, 'nath', 10)
     }
@@ -21,7 +27,7 @@ export class Bank extends DioAccount {
         console.log("1 - to check your balance. \n");
         console.log("2 - Deposit service. \n");
         console.log("3 - Withdraw service. \n ");
-        // console.log("4 - Withdraw service \n");
+        console.log("4 - Get Loan. \n");
 
         this.bankInteraction;
     }
@@ -35,7 +41,6 @@ export class Bank extends DioAccount {
 
             switch(Number(option)) {
                 case 1:
-                    console.log("Teste")
                     this.checkBalance();
                     this.finishUse();
                     break;
@@ -55,6 +60,10 @@ export class Bank extends DioAccount {
                     })                                 
                     this.finishUse();
                     break;
+                case 4:
+                    this.rl.question("Please insert the amount of loan you intend on getting", (option : string) => {
+                        CompanyAccount.getLoan(Number(option), this.balance);
+                    })
                 default:
                     throw new Error("Number couldn't be identified. Closing application. ");
     

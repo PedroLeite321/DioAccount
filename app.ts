@@ -14,7 +14,6 @@ const bank: Bank = new Bank();
 // companyAccount.deposit(prompt("Whats your name?"), Number(prompt('Please, select the value you want to input')));
 console.log(companyAccount)
 
-console.log(companyAccount.checkAvailableLoan);
 const useProgram = (userId: number) => {
     let name: string
     let age: number
