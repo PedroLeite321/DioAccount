@@ -20,21 +20,28 @@ var DioAccount_1 = require("./DioAccount");
 var CompanyAccount = /** @class */ (function (_super) {
     __extends(CompanyAccount, _super);
     function CompanyAccount(name, accountNumber) {
-        var _this = _super.call(this, name, accountNumber) || this;
-        _this.emprestimo = 0;
-        _this.emprestimoDisponivel = 0;
-        // You can get only 20% more;
-        _this.checkAvailableLoan = function () {
-            var emprestimoDisponivel = (_this.balance * (20 / 100)) + _this.balance;
-            console.log(_this.emprestimoDisponivel);
-            return emprestimoDisponivel;
-        };
-        _this.getLoan = function () {
-            _this.emprestimoDisponivel = _this.checkAvailableLoan();
-            _this.balance += _this.emprestimo;
-        };
-        return _this;
+        return _super.call(this, name, accountNumber) || this;
     }
+    var _a;
+    _a = CompanyAccount;
+    // static balance: any;
+    // static emprestimo: any;
+    // static checkAvailableLoan(): any {
+    //   throw new Error("Method not implemented.");
+    // }
+    CompanyAccount.emprestimo = 0;
+    CompanyAccount.emprestimoDisponivel = 0;
+    CompanyAccount.getLoan = function (emprestimo, balance) {
+        _a.emprestimoDisponivel = _a.checkAvailableLoan(balance);
+        balance += _a.emprestimo;
+        console.log(balance);
+    };
+    // You can get only 20% more;
+    CompanyAccount.checkAvailableLoan = function (balance) {
+        var emprestimoDisponivel = (balance * (20 / 100)) + balance;
+        console.log(_a.emprestimoDisponivel);
+        return emprestimoDisponivel;
+    };
     return CompanyAccount;
 }(DioAccount_1.DioAccount));
 exports.CompanyAccount = CompanyAccount;

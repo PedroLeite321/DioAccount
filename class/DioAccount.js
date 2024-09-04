@@ -10,6 +10,7 @@ var DioAccount = /** @class */ (function () {
             console.log(_this.balance);
         };
         this.checkWithdraw = function (withdrawnIntent) {
+            console.log(_this.balance);
             if (withdrawnIntent > _this.balance) {
                 throw new Error("Transação impossível: Valor retirado muito alto.");
             }
@@ -27,9 +28,15 @@ var DioAccount = /** @class */ (function () {
         };
         //Will receive the amount the user want to withrawn.
         this.withdraw = function (withdrawnValue) {
-            _this.balance -= withdrawnValue;
-            _this.checkWithdraw(withdrawnValue);
-            console.log('Voce sacou');
+            var checkedWithdraw = false;
+            if (checkedWithdraw) {
+                _this.checkWithdraw(withdrawnValue);
+            }
+            else {
+                _this.balance -= withdrawnValue;
+                1;
+                console.log("Atualmente você possui: " + _this.balance + "\n");
+            }
         };
         this.getBalance = function () {
             console.log(_this.balance);

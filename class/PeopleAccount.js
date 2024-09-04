@@ -24,6 +24,9 @@ var PeopleAccount = /** @class */ (function (_super) {
         _this.doc_id = doc_id;
         return _this;
     }
+    PeopleAccount.deposit = function (arg0) {
+        throw new Error("Method not implemented.");
+    };
     return PeopleAccount;
 }(DioAccount_1.DioAccount));
 exports.PeopleAccount = PeopleAccount;

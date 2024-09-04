@@ -12,17 +12,16 @@ const companyAccount: CompanyAccount = new CompanyAccount('DIO', 20);
 
 const bank: Bank = new Bank();
 // companyAccount.deposit(prompt("Whats your name?"), Number(prompt('Please, select the value you want to input')));
-console.log(companyAccount)
 
 const useProgram = (userId: number) => {
-    let name: string
-    let age: number
+    let name: string;
+    let age: number;
     
     // Set up readline interface
  
 
-    const welcomeuUser = () => {
-        console.log("Welcome to our bank!");
+    const welcomeUser = () => {
+        console.log("Welcome to our bank! \n");
     }
 
     // const askUserName = () => {
@@ -39,10 +38,12 @@ const useProgram = (userId: number) => {
 
    
         
-    
+    welcomeUser();    
     
 }
 // For the sake of the simplicity, lets say there's only one user. 
+useProgram(1);
+
 bank.bankInteraction();
 
-useProgram(1);
+

@@ -4,6 +4,7 @@ import { PeopleAccount } from "./PeopleAccount";
 import { CompanyAccount } from "./CompanyAccount";
 
 export class Bank extends DioAccount {
+
     rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout
@@ -12,14 +13,13 @@ export class Bank extends DioAccount {
     PeopleAccount : PeopleAccount;
     CompanyAccount : CompanyAccount;
 
-       constructor() {
-        super('Nath', 1); //Call all atributes from parent class'peopleAccount'
+    constructor() {
 
-        super("DIO", 20); // call attributes from CompanyAccount too. (Because there cannot be multiple constructors).
+        super('DIO', 20);
 
         this.CompanyAccount = new CompanyAccount('DIO', 20);
 
-        this.PeopleAccount = new PeopleAccount(1, 'nath', 10)
+        this.PeopleAccount = new PeopleAccount(1, 'nath', 10);
     }
 
     showOptions = () => {
@@ -36,7 +36,7 @@ export class Bank extends DioAccount {
     
         this.showOptions();
     
-        this.rl.question("Please select the service you want to use: ", (option: string) => {
+        this.rl.question("Please select the service you want to use:\t ", (option: string) => {
             // This needs to be declared as a annonymous function as using the keyword functions triggers 'any' on this keyword. (That being caused because 'this' acts globally instead of within its scope.)
 
             switch(Number(option)) {
@@ -46,7 +46,7 @@ export class Bank extends DioAccount {
                     break;
                     
                 case 2:
-                    this.rl.question("Please, how much do you want to deposit?", (option : string)=> {
+                    this.rl.question("Please, how much do you want to deposit? \t", (option : string) => {
                         this.deposit(Number(option));
                         this.finishUse();
                     });                   
@@ -55,13 +55,15 @@ export class Bank extends DioAccount {
                     break;
                 case 3:
                     
-                    this.rl.question("Please, how much do you want to withdraw?", (option : string)=> {
-                        this.withdraw(Number(option));
+                    this.rl.question("Please, how much do you want to withdraw? \t", (optionWithdraw : string) => {
+                        
+                        this.withdraw(Number(optionWithdraw));
+                        this.finishUse();
                     })                                 
-                    this.finishUse();
+                    
                     break;
                 case 4:
-                    this.rl.question("Please insert the amount of loan you intend on getting", (option : string) => {
+                    this.rl.question("Please insert the amount of loan you intend on getting \t", (option : string) => {
                         CompanyAccount.getLoan(Number(option), this.balance);
                     })
                 default:
@@ -74,11 +76,11 @@ export class Bank extends DioAccount {
     }
 
     finishUse = () => {
-        console.log("Thanks! Do you want to keep using our product?");
+        console.log("Thanks! Do you want to keep using our product?\t");
 
         console.log("Press 1 - 'Yes' \n\n Press 2 - 'No'");
 
-        this.rl.question("Please select the service you want to use: ", (option: string) => {
+        this.rl.question("Please select the option: ", (option: string) => {
             if(option === '1') {
                 this.bankInteraction();
 
