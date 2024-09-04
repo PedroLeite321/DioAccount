@@ -58,8 +58,13 @@ var Bank = /** @class */ (function (_super) {
                         break;
                     case 4:
                         _this.rl.question("Please insert the amount of loan you intend on getting \t", function (option) {
-                            CompanyAccount_1.CompanyAccount.getLoan(Number(option), _this.balance);
+                            var getLoan = 0;
+                            console.log("I'm working!");
+                            getLoan = CompanyAccount_1.CompanyAccount.getLoan(Number(option));
+                            _this.balance += getLoan;
+                            console.log("\n\t".concat(_this.balance, "\t"));
                         });
+                        break;
                     default:
                         throw new Error("Number couldn't be identified. Closing application. ");
                 }

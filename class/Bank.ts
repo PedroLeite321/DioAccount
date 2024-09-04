@@ -64,8 +64,13 @@ export class Bank extends DioAccount {
                     break;
                 case 4:
                     this.rl.question("Please insert the amount of loan you intend on getting \t", (option : string) => {
-                        CompanyAccount.getLoan(Number(option), this.balance);
+                        let getLoan : number = 0;
+                        console.log("I'm working!")
+                        getLoan = CompanyAccount.getLoan(Number(option));
+                        this.balance += getLoan
+                        console.log(`\n\t${this.balance}\t`);
                     })
+                    break;
                 default:
                     throw new Error("Number couldn't be identified. Closing application. ");
     

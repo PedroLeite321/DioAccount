@@ -22,25 +22,20 @@ var CompanyAccount = /** @class */ (function (_super) {
     function CompanyAccount(name, accountNumber) {
         return _super.call(this, name, accountNumber) || this;
     }
-    var _a;
-    _a = CompanyAccount;
     // static balance: any;
     // static emprestimo: any;
     // static checkAvailableLoan(): any {
     //   throw new Error("Method not implemented.");
     // }
-    CompanyAccount.emprestimo = 0;
-    CompanyAccount.emprestimoDisponivel = 0;
-    CompanyAccount.getLoan = function (emprestimo, balance) {
-        _a.emprestimoDisponivel = _a.checkAvailableLoan(balance);
-        balance += _a.emprestimo;
-        console.log(balance);
+    CompanyAccount.getLoan = function (emprestimo) {
+        emprestimo = CompanyAccount.checkAvailableLoan(emprestimo);
+        return emprestimo;
     };
     // You can get only 20% more;
-    CompanyAccount.checkAvailableLoan = function (balance) {
-        var emprestimoDisponivel = (balance * (20 / 100)) + balance;
-        console.log(_a.emprestimoDisponivel);
-        return emprestimoDisponivel;
+    CompanyAccount.checkAvailableLoan = function (emprestimoRequisitado) {
+        var emprestimoDisponivel = (emprestimoRequisitado * (20 / 100)) + emprestimoRequisitado;
+        console.log(emprestimoRequisitado);
+        return emprestimoRequisitado;
     };
     return CompanyAccount;
 }(DioAccount_1.DioAccount));

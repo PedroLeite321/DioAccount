@@ -6,15 +6,13 @@ export class CompanyAccount extends DioAccount {
   // static checkAvailableLoan(): any {
   //   throw new Error("Method not implemented.");
   // }
-  static emprestimo : number = 0;
-  static emprestimoDisponivel : number = 0;
+   
   
   
-  static getLoan = (emprestimo : number, balance : number): void => {
-    this.emprestimoDisponivel = CompanyAccount.checkAvailableLoan(balance);
-    balance += this.emprestimo;
-    console.log(balance);    
-
+  static getLoan = (emprestimo : number): number => {
+    emprestimo = CompanyAccount.checkAvailableLoan(emprestimo);
+     
+    return emprestimo;
   }
   
   
@@ -23,12 +21,12 @@ export class CompanyAccount extends DioAccount {
     super(name, accountNumber)
   }
   // You can get only 20% more;
-  static checkAvailableLoan = (balance : number) => {
-    const emprestimoDisponivel = (balance * (20 / 100)) + balance;
+  static checkAvailableLoan = (emprestimoRequisitado : number) => {
+    const emprestimoDisponivel = (emprestimoRequisitado * (20 / 100)) + emprestimoRequisitado;
 
-    console.log(this.emprestimoDisponivel);
+    console.log(emprestimoRequisitado);
 
-    return emprestimoDisponivel;
+    return emprestimoRequisitado;
 
   }
 
